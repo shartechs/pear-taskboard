@@ -1,0 +1,122 @@
+:root {
+  --primary-accent: #48ffa2;
+  --background-color: #0f172a
+}
+
+pear-ctrl[data-platform="darwin"] {
+  margin-top: 12px;
+  margin-left: 10px;
+}
+
+#titlebar {
+  -webkit-app-region: drag;
+  height: 30px;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: var(--background-color);
+  filter: drop-shadow(0px -25px 50px var(--primary-accent));
+}
+
+button,
+input {
+  all: unset;
+  border-radius: 10px;
+  border: 1px ridge var(--primary-accent);
+  background: #000;
+  color: var(--primary-accent);
+  padding: .45rem;
+  font-family: monospace;
+  font-size: 1rem;
+  line-height: 1rem;
+  cursor: pointer;
+}
+
+body {
+  background-color: var(--background-color);
+  font-family: monospace;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  display: flex;
+  height: 100vh;
+  color: var(--primary-accent);
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+.hidden {
+  display: none !important;
+}
+
+#or {
+  margin: 1.5rem auto;
+}
+
+#setup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#loading {
+  align-self: center;
+}
+
+
+#todo {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  padding: .75rem;
+}
+
+#details {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
+
+#todo-form {
+  display: flex;
+  gap: .5rem;
+  margin-bottom: 1rem;
+}
+
+#todo-search {
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: .5rem;
+}
+
+.completed summary {
+  text-decoration: line-through;
+}
+
+details summary {
+  cursor: pointer;
+}
+
+.delete {
+  margin-left: .5rem;
+}
+
+
+#chat-room-topic {
+
+  -webkit-app-region: no-drag;   
+  user-select: text;            
+  cursor: text;                 
+}

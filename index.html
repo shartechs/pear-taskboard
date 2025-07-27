@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module" src="./app.js" defer></script>
+    <title>Pear P2P Taskboard</title>
+  </head>
+  <body>
+    <div id="titlebar">
+      <pear-ctrl></pear-ctrl>
+    </div>
+    <main>
+
+      <div id="setup">
+        <button id="create-chat-room">Create Room</button>
+        <div id="or">— or —</div>
+        <form id="join-form">
+          <button type="submit" id="join-chat-room">Join Room</button>
+          <input
+            required
+            id="join-chat-room-topic"
+            type="text"
+            placeholder="Room Topic (hex)"
+          />
+        </form>
+      </div>
+
+      <div id="loading" class="hidden">Loading …</div>
+
+
+      <div id="todo" class="hidden">
+        <div id="details">
+          <div>
+            Topic: <span id="chat-room-topic"></span>
+          </div>
+          <div>
+            Peers: <span id="peers-count">0</span>
+          </div>
+        </div>
+
+        <form id="todo-form">
+          <input required id="todo-name" type="text" placeholder="Todo name" />
+          <input id="todo-desc" type="text" placeholder="Description (optional)" />
+          <button type="submit">Add Todo</button>
+        </form>
+
+        <input
+          id="todo-search"
+          type="text"
+          placeholder="Search by name or date…"
+        />
+
+        <div id="todo-list"></div>
+      </div>
+    </main>
+  </body>
+</html>
