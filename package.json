@@ -6,8 +6,8 @@
     "type": "desktop",
     "gui": {
       "backgroundColor": "#0f172a",
-      "height": "540",
-      "width": "720"
+      "height": "720",
+      "width": "1080"
     }
   },
   "type": "module",
