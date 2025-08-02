@@ -15,7 +15,7 @@ let todos = [];
 let dragInitialized = false;
 const sortableInstances = {};
 
-// --- Peer networking ---
+// Peer networking
 swarm.on("connection", (peer) => {
   peer.on("data", (data) => handleMessage(data));
   peer.on("error", (err) => console.error("Peer error", err));
@@ -25,7 +25,7 @@ swarm.on("update", () => {
   if (pc) pc.textContent = swarm.connections.size;
 });
 
-// --- UI hooks ---
+// UI hooks
 document
   .querySelector("#create-chat-room")
   .addEventListener("click", createRoom);
@@ -33,7 +33,7 @@ document.querySelector("#join-form").addEventListener("submit", joinRoom);
 document.querySelector("#todo-form").addEventListener("submit", addTodo);
 document.querySelector("#todo-search").addEventListener("input", renderTodos);
 
-// --- Room logic ---
+// Room logic
 async function createRoom() {
   const topic = crypto.randomBytes(32);
   await joinSwarm(topic);
@@ -69,7 +69,7 @@ async function joinSwarm(topicBuf) {
   renderTodos();
 }
 
-// --- Messaging ---
+// Messaging
 function broadcast(obj) {
   const buf = b4a.from(JSON.stringify(obj));
   for (const peer of swarm.connections) peer.write(buf);
@@ -103,7 +103,7 @@ function handleMessage(data) {
   }
 }
 
-// --- Todo operations ---
+// Todo operations
 function addTodo(e) {
   e.preventDefault();
   const nameEl = document.querySelector("#todo-name");
@@ -155,7 +155,7 @@ function sortTodos() {
   todos.sort((a, b) => a.timestamp - b.timestamp);
 }
 
-// --- Render & search ---
+// Todos rendering and filtering
 function renderTodos() {
   const q = document.querySelector("#todo-search").value.trim().toLowerCase();
 
@@ -179,7 +179,6 @@ function renderTodos() {
         if (todo.status === "done") item.classList.add("done");
         item.dataset.id = todo.id;
 
-        // title + meta
         const summary = document.createElement("div");
         summary.className = "todo-summary";
         summary.innerHTML = `<div><strong>${escapeHtml(
@@ -189,7 +188,6 @@ function renderTodos() {
         ).toLocaleDateString()}</div>`;
         item.append(summary);
 
-        // description
         if (todo.description) {
           const desc = document.createElement("div");
           desc.className = "todo-desc";
@@ -197,7 +195,6 @@ function renderTodos() {
           item.append(desc);
         }
 
-        // delete
         const del = document.createElement("button");
         del.className = "delete";
         del.setAttribute("aria-label", "Delete task");
@@ -216,7 +213,7 @@ function renderTodos() {
   if (pc) pc.textContent = swarm.connections.size;
 }
 
-// --- Drag & Drop (SortableJS) ---
+// Drag & Drop with (SortableJS)
 function setupDragAndDrop() {
   if (dragInitialized) return;
   if (typeof Sortable === "undefined") {
@@ -246,7 +243,7 @@ function setupDragAndDrop() {
   dragInitialized = true;
 }
 
-// --- Helpers ---
+// Helpers
 function escapeHtml(str) {
   return str
     .replaceAll("&", "&amp;")
